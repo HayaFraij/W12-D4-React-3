@@ -12,10 +12,22 @@
 
     // Practice 1 - const, let, freeze
     // Create a variable named "username" that should not be reassigned
+    const username = 'Haya Fraij'
     // Create a variable named "loggedIn" that can be reassigned
+    let loggedIn = true
     // Create a post object with an id and title that is frozen
+    const obj = {
+      title: username,
+      id: loggedIn
+    }
+    Object.freeze(obj)
     // Test whether you can reassign each of the variables
+
     // Log out each of the variables to the page
+    console.log(username)
+    console.log(loggedIn)
+    console.log(obj)
+    
 
 
 
@@ -24,10 +36,10 @@
     // Create a variable called message that can be reassigned
     // Use a template literal to create message like "Hi firstName lastName!"
     // Log out the message to the console
-    const firstName = "";
-    const lastName = ""
+    const firstName = "Haya";
+    const lastName = "Fraij"
 
-    let message = ``;
+    let message = `Hi ${firstName} ${lastName}!`;
 
     console.log(message);
 
@@ -42,7 +54,13 @@
         `<p>${name}<p>`
       )
     }
+    ArrowName = (name) => {
+      return (
+        `<p>${name}<p>`
+      )
+    }
 
+    console.log(ArrowName('Haya Fraij'))
 
 
     // Practice 4 - .filter() and .map()
@@ -65,7 +83,18 @@
       }
     ];
 
+    let filtered = posts.filter(elem =>  {
+      let arr = elem.title.split(' ')
+      return arr[1] === 'post'
+      })
+      console.log(filtered)
 
+      let maped = filtered.map(elem => elem.title)
+      console.log(maped)
+      
+      let chainingMapFilter = posts.filter(elem => elem.title.includes('post')).map(elem => elem.title)
+
+      console.log(chainingMapFilter)
 
     // Practice 5 - DOM Creation
     // Map over the postsArray
@@ -91,6 +120,12 @@
       }
     ];
 
+      let map = postsArray.map(elem => {
+      let h2 = document.createElement('h2')
+      let titleMap = document.createTextNode(elem.title)
+        var output = h2.appendChild(titleMap)
+        return document.body.append(output) 
+        })
 
   </script>
 </body>
